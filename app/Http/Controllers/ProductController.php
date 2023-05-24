@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\ProductColor;
+use App\Models\ProductImage;
+use App\Models\ProductDetail;
 use App\Http\Resources\ProductResource;
 class ProductController extends Controller
 {
@@ -96,6 +99,20 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+          // Xóa thông tin sản phẩm
+    $product = Product::where('id', $id)->delete();
+
+    // Lấy giá trị id của $productColor trước khi xóa
+    $productColor = ProductColor::where('product_id', $id)->first(); // Sử dụng first() thay vì pluck('id')
+
+    if ($productColor) {
+        $productColorId = $productColor->id; // Lấy giá trị id của $productColor
+        
+        // Xóa dữ liệu từ các bảng liên quan
+        $productColorDeletedCount = ProductColor::where('product_id', $id)->delete();
+        $productImageDeletedCount = ProductImage::where('product_id', $id)->delete();
+        $productSizeDeletedCount = ProductDetail::where('product_color_id', $productColorId)->delete();
+    }
     }
 
      /**
