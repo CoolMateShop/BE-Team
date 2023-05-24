@@ -48,7 +48,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        //tim kiem san pham theo id
         $productIds = explode('.', $id);
         $products = Product::with('category', 'product_colors', 'product_colors.product_details', 'product_images')->whereIn('id', $productIds)->get();
         return response()->json($products);
