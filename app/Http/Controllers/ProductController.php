@@ -37,7 +37,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         //Luu san pham vao db
+         $request->validate([
+            'name'=>'required',
+            'price'=>'required',
+            'description'=>'required',    
+            'category_id'=>'required',
+        ]);
+        $product = Product::create($request->all());
+        return new ProductResource($product);
     }
 
     /**
@@ -75,6 +83,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         //
+        
     }
 
     /**
