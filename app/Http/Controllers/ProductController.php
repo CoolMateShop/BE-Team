@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Http\Resources\ProductResource;
+
 class ProductController extends Controller
 {
     /**
@@ -88,20 +89,20 @@ class ProductController extends Controller
         //
     }
 
-     /**
+    /**
      * Remove the specified resource from storage.
      *
      * @param  Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function categoryID( $categoryId)
+    public function categoryID($categoryId)
     {
         // $categoryId = $request->input('category_id');
-        
+
         // Tìm kiếm sản phẩm dựa trên category_id
         $products = Product::with('category', 'product_colors', 'product_colors.product_details', 'product_images')->where('category_id', $categoryId)->get();
 
         // Trả về kết quả dưới dạng ProductResource collection
-        return ProductResource::collection($products);
+        return response()->json($products);
     }
 }
