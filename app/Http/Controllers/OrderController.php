@@ -91,6 +91,7 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         //
+        
     }
 
     /**
@@ -102,5 +103,15 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function updateStatus($id)
+    {
+        $order = Order::find($id);
+            
+        // Cập nhật giá trị status thành 1
+        $order->status = 1;
+        $order->save();
+        return response()->json($order);
     }
 }
