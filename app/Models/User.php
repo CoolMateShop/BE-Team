@@ -20,7 +20,7 @@ class User extends Authenticatable implements JWTSubject
      */
     public $timestamps = false;
     protected $fillable = [
-        'username',
+        'full_name',
         'email',
         'password',
         'phone_number',

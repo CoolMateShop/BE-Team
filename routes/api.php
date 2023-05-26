@@ -25,6 +25,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::resource('/products', ProductController::class)->only(['index', 'show', 'store', 'update', 'destroy']);
 Route::resource('/category', CategoryController::class)->only(['index', 'show', 'store', 'update', 'destroy']);
 Route::get('/product-category/{category_id}', [ProductController::class, 'categoryID']);
+Route::get('/product/search/', [ProductController::class, 'search']);
+
 //auth
 Route::group([
     'middleware' => 'api',
