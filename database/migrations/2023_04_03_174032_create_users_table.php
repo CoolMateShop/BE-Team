@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('email', 50)->UNIQUE();
             $table->string('phone_number', 10)->UNIQUE();
             $table->string('address', 70)->nullable();
-            $table->integer('role_id');
+            $table->integer('role_id')->default(2);
         });
     }
 
