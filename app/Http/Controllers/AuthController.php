@@ -76,16 +76,16 @@ class AuthController extends Controller
         ], 201);
     }
 
-    // /**
-    //  * Log the user out (Invalidate the token).
-    //  *
-    //  * @return \Illuminate\Http\JsonResponse
-    //  */
-    // public function logout()
-    // {
-    //     auth()->logout();
-    //     return response()->json(['message' => 'User successfully signed out']);
-    // }
+    /**
+     * Log the user out (Invalidate the token).
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function logout()
+    {
+        auth()->logout();
+        return response()->json(['message' => 'User successfully signed out']);
+    }
     // /**
     //  * Refresh a token.
     //  *
@@ -100,10 +100,10 @@ class AuthController extends Controller
     //  *
     //  * @return \Illuminate\Http\JsonResponse
     //  */
-    // public function userProfile()
-    // {
-    //     return response()->json(auth()->user());
-    // }
+    public function userProfile()
+    {
+        return response()->json(auth()->user());
+    }
     // /**
     //  * Get the token array structure.
     //  *
