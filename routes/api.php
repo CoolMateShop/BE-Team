@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Models\Category;
+use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,7 @@ Route::resource('/products', ProductController::class)->only(['index', 'show', '
 Route::resource('/category', CategoryController::class)->only(['index', 'show', 'store', 'update', 'destroy']);
 Route::get('/product-category/{category_id}', [ProductController::class, 'categoryID']);
 Route::get('/product/search/', [ProductController::class, 'search']);
-
+Route::resource('/orders', OrderController::class)->only(['index', 'show', 'store', 'update', 'destroy']);
 //auth
 Route::group([
     'middleware' => 'api',
@@ -36,5 +37,5 @@ Route::group([
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout']);
     // Route::post('/refresh', [AuthController::class, 'refresh']);
-     Route::get('/user-profile', [AuthController::class, 'userProfile']);
+    Route::get('/user-profile', [AuthController::class, 'userProfile']);
 });
