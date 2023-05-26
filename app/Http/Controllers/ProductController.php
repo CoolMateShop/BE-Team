@@ -55,13 +55,22 @@ class ProductController extends Controller
         return response()->json($products);
     }
 
+    // public function search(Request $request)
+    // {
+    //     $keyword = $request->input('keyword');
+
+    //     $products = Product::with('category', 'product_colors', 'product_colors.product_details', 'product_images')
+    //         ->where('name', 'like', '%' . $keyword . '%')
+    //         ->get();
+    //     return response()->json($products);
+    // }
     public function search(Request $request)
     {
         $keyword = $request->input('keyword');
 
         $products = Product::with('category', 'product_colors', 'product_colors.product_details', 'product_images')
             ->where('name', 'like', '%' . $keyword . '%')
-            ->paginate(5);
+            ->paginate(2);
         return $products;
     }
 
