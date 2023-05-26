@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('phone_number', 15);
             $table->string('note')->nullable();
             $table->float('total_price', 12, 2);
-            $table->boolean('status')->default(false);
+            $table->tinyInteger('status')->default(0);
         });
     }
 

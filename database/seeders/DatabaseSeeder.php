@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
         );
         DB::table('users')->insert(
             [
-                'full_name' => 'user1',
+                'full_name      ' => 'user1',
                 'password' => Hash::make('user1'),
                 'email' => 'user1@email.com',
                 'phone_number' => '0147258369',
@@ -698,7 +698,7 @@ class DatabaseSeeder extends Seeder
                 "phone_number" => "0147258369",
                 "note" => "Giao vào ngày thứ 7 hoặc chủ nhât",
                 "total_price" => 550000,
-                "status" => true
+                "status" => 1
             ]
         );
         //table order_details
