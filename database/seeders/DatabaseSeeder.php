@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
         // table users
         DB::table('users')->insert(
             [
-                'username' => 'haibang',
+                'full_name' => 'haibang',
                 'password' => Hash::make('haibang'),
                 'email' => 'haibang@email.com',
                 'phone_number' => '0355511436',
@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         );
         DB::table('users')->insert(
             [
-                'username' => 'vanthanh',
+                'full_name' => 'vanthanh',
                 'password' => Hash::make('vanthanh'),
                 'email' => 'vanthanh@email.com',
                 'phone_number' => '0123456789',
@@ -51,7 +51,7 @@ class DatabaseSeeder extends Seeder
         );
         DB::table('users')->insert(
             [
-                'username' => 'thanhtam',
+                'full_name' => 'thanhtam',
                 'password' => Hash::make('thanhtam'),
                 'email' => 'thanhtam@email.com',
                 'phone_number' => '9876543210',
@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
         );
         DB::table('users')->insert(
             [
-                'username' => 'user1',
+                'full_name' => 'user1',
                 'password' => Hash::make('user1'),
                 'email' => 'user1@email.com',
                 'phone_number' => '0147258369',
