@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
         );
         DB::table('users')->insert(
             [
-                'full_name      ' => 'user1',
+                'full_name' => 'user1',
                 'password' => Hash::make('user1'),
                 'email' => 'user1@email.com',
                 'phone_number' => '0147258369',
