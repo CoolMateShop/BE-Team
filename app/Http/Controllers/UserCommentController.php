@@ -54,11 +54,18 @@ class UserCommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($product_detaill_id)
+    public function show($product_id)
     {
         
-        $userComment=UserComment::where('product_detail_id',$product_detaill_id)->orderBy('comment_at', 'desc')->get();
-        return response()->json($userComment);
+        $userComment=UserComment::with('user')->where('product_id',$product_id)->orderBy('comment_at', 'desc')->get();
+        $formattedUserComments = $userComment->map(function ($userComment) {
+            $fullName = $userComment->user->full_name;
+            $userComment->user_id = $fullName;
+            unset($userComment->user);
+            return $userComment;
+        });
+        
+        return response()->json($formattedUserComments);
     }
 
     /**
