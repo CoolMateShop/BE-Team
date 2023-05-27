@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
 {
@@ -92,6 +93,36 @@ class CategoryController extends Controller
     {
         //
         // Xóa thông tin sản phẩm
-    $product = Category::where('id', $id)->delete();
+        $category = Category::findOrFail($id);
+
+        // Lấy danh sách sản phẩm (product) thuộc danh mục đó
+        $products = $category->products;
+        
+        // Xóa các sản phẩm, product color, product detail và ảnh liên quan
+        foreach ($products as $product) {
+            $product->product_colors->each(function ($productColor) {
+                $productColor->product_details()->delete();
+            });
+        
+            $product->product_colors()->delete();
+            $imagePath = public_path('images');
+            foreach ($product->product_images as $productImage) {
+                $imageFileName = basename($productImage->url);
+                $imageFilePath = $imagePath . '/' . $imageFileName;
+                if (File::exists($imageFilePath)) {
+                    File::delete($imageFilePath);
+                }
+            }
+            $product->product_images()->delete();
+        
+            // Xóa ảnh trong thư mục public/images
+        
+        
+            $product->delete();
+        }
+        
+        // Xóa danh mục (category)
+        $category->delete();
+    
     }
 }
