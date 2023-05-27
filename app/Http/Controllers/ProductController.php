@@ -148,7 +148,27 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'price' => 'required',
+            'sale' => 'required',
+            'description' => 'required',
+            'category_id' => 'required'
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+    
+        $product = Product::findOrFail($id);
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        $product->sale = $request->input('sale');
+        $product->description = $request->input('description');
+        $product->category_id = $request->input('category_id');
+        $product->save();
+    
+        return response()->json($product, 200);
     }
 
     /**
