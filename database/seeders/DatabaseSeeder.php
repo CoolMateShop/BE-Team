@@ -31,9 +31,9 @@ class DatabaseSeeder extends Seeder
         // table users
         DB::table('users')->insert(
             [
-                'username' => 'haibang',
+                'full_name' => 'haibang',
                 'password' => Hash::make('haibang'),
-                'email' => 'haibang@gmail.com',
+                'email' => 'haibang@email.com',
                 'phone_number' => '0355511436',
                 'address' => 'Dong Thap',
                 'role_id' => 1,
@@ -41,9 +41,9 @@ class DatabaseSeeder extends Seeder
         );
         DB::table('users')->insert(
             [
-                'username' => 'vanthanh',
+                'full_name' => 'vanthanh',
                 'password' => Hash::make('vanthanh'),
-                'email' => 'vanthanh@gmail.com',
+                'email' => 'vanthanh@email.com',
                 'phone_number' => '0123456789',
                 'address' => 'Binh Dinh',
                 'role_id' => 1,
@@ -51,9 +51,9 @@ class DatabaseSeeder extends Seeder
         );
         DB::table('users')->insert(
             [
-                'username' => 'thanhtam',
+                'full_name' => 'thanhtam',
                 'password' => Hash::make('thanhtam'),
-                'email' => 'thanhtam@gmail.com',
+                'email' => 'thanhtam@email.com',
                 'phone_number' => '9876543210',
                 'address' => 'Tay Ninh',
                 'role_id' => 1,
@@ -61,9 +61,9 @@ class DatabaseSeeder extends Seeder
         );
         DB::table('users')->insert(
             [
-                'username' => 'user1',
+                'full_name' => 'user1',
                 'password' => Hash::make('user1'),
-                'email' => 'user1@gmail.com',
+                'email' => 'user1@email.com',
                 'phone_number' => '0147258369',
                 'address' => 'TPHCM',
                 'role_id' => 2,
@@ -134,95 +134,125 @@ class DatabaseSeeder extends Seeder
         DB::table('product_images')->insert(
             [
                 "product_id" => 1,
-                "url" => "Áo Polo nam co giãn công nghệ Graphene1",
+                "url" => "http://127.0.0.1:8000/images/poloaqua1.png",
             ]
         );
         DB::table('product_images')->insert(
             [
                 "product_id" => 1,
-                "url" => "Áo Polo nam co giãn công nghệ Graphene2",
+                "url" => "http://127.0.0.1:8000/images/poloaqua2.png",
             ]
         );
         DB::table('product_images')->insert(
             [
                 "product_id" => 1,
-                "url" => "Áo Polo nam co giãn công nghệ Graphene3",
+                "url" => "http://127.0.0.1:8000/images/poloaqua3.png",
+            ]
+        );
+        DB::table('product_images')->insert(
+            [
+                "product_id" => 1,
+                "url" => "http://127.0.0.1:8000/images/poloaqua4.png",
             ]
         );
         //images product_id 2
         DB::table('product_images')->insert(
             [
                 "product_id" => 2,
-                "url" => "Áo Polo nam Excool1",
+                "url" => "http://127.0.0.1:8000/images/navy1.png",
             ]
         );
         DB::table('product_images')->insert(
             [
                 "product_id" => 2,
-                "url" => "Áo Polo nam Excool2",
+                "url" => "http://127.0.0.1:8000/images/navy2.png",
             ]
         );
         DB::table('product_images')->insert(
             [
                 "product_id" => 2,
-                "url" => "Áo Polo nam Excool3",
+                "url" => "http://127.0.0.1:8000/images/navy3.png",
+            ]
+        );
+        DB::table('product_images')->insert(
+            [
+                "product_id" => 2,
+                "url" => "http://127.0.0.1:8000/images/navy4.png",
             ]
         );
         //images product_id 3
         DB::table('product_images')->insert(
             [
                 "product_id" => 3,
-                "url" => "Áo Polo nam Pique Cotton USA thấm hút (trơn)1",
+                "url" => "http://127.0.0.1:8000/images/PoloQuiveNavy1.jpg",
             ]
         );
         DB::table('product_images')->insert(
             [
                 "product_id" => 3,
-                "url" => "Áo Polo nam Pique Cotton USA thấm hút (trơn)2",
+                "url" => "http://127.0.0.1:8000/images/PoloQuiveNavy2.jpg",
             ]
         );
         DB::table('product_images')->insert(
             [
                 "product_id" => 3,
-                "url" => "Áo Polo nam Pique Cotton USA thấm hút (trơn)3",
+                "url" => "http://127.0.0.1:8000/images/PoloQuiveNavy3.jpg",
+            ]
+        );
+        DB::table('product_images')->insert(
+            [
+                "product_id" => 3,
+                "url" => "http://127.0.0.1:8000/images/PoloQuiveNavy4.jpg",
             ]
         );
         //images product_id 4
         DB::table('product_images')->insert(
             [
                 "product_id" => 4,
-                "url" => "Áo Sơ mi nam Excool Limited ngắn tay chui đầu1",
+                "url" => "http://127.0.0.1:8000/images/excoolsomiden1.png",
             ]
         );
         DB::table('product_images')->insert(
             [
                 "product_id" => 4,
-                "url" => "Áo Sơ mi nam Excool Limited ngắn tay chui đầu2",
+                "url" => "http://127.0.0.1:8000/images/excoolsomiden2.png",
             ]
         );
         DB::table('product_images')->insert(
             [
                 "product_id" => 4,
-                "url" => "Áo Sơ mi nam Excool Limited ngắn tay chui đầu3",
+                "url" => "http://127.0.0.1:8000/images/excoolsomiden3.png",
+            ]
+        );
+        DB::table('product_images')->insert(
+            [
+                "product_id" => 4,
+                "url" => "http://127.0.0.1:8000/images/excoolsomiden4.png",
             ]
         );
         //images product_id 5
         DB::table('product_images')->insert(
             [
                 "product_id" => 5,
-                "url" => "Áo sơ mi nam dài tay Café-DriS khử mùi hiệu quả1",
+                "url" => "http://127.0.0.1:8000/images/somicfaqua1.png",
             ]
         );
         DB::table('product_images')->insert(
             [
                 "product_id" => 5,
-                "url" => "Áo sơ mi nam dài tay Café-DriS khử mùi hiệu quả2",
+                "url" => "http://127.0.0.1:8000/images/somicfaqua2.png",
             ]
         );
         DB::table('product_images')->insert(
             [
                 "product_id" => 5,
-                "url" => "Áo sơ mi nam dài tay Café-DriS khử mùi hiệu quả3",
+                "url" => "http://127.0.0.1:8000/images/somicfaqua3.png",
+            ]
+        );
+        DB::table('product_images')->insert(
+            [
+                "product_id" => 5,
+                "url" => "http://127.0.0.1:8000/images/somicfaqua4.png",
             ]
         );
         // table product_colors
@@ -668,7 +698,7 @@ class DatabaseSeeder extends Seeder
                 "phone_number" => "0147258369",
                 "note" => "Giao vào ngày thứ 7 hoặc chủ nhât",
                 "total_price" => 550000,
-                "status" => true
+                "status" => 1
             ]
         );
         //table order_details
@@ -705,7 +735,7 @@ class DatabaseSeeder extends Seeder
             [
                 "content" => "Sản phẩm tốt quá trời",
                 "user_id" => 4,
-                "order_detail_id" => 1,
+                "product_id" => 1,
                 "star" => 5,
             ]
         );
@@ -713,7 +743,7 @@ class DatabaseSeeder extends Seeder
             [
                 "content" => "Sản phẩm hơi tệ nha",
                 "user_id" => 4,
-                "order_detail_id" => 3,
+                "product_id" => 3,
                 "star" => 3,
             ]
         );
