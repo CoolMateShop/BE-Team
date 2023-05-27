@@ -29,8 +29,10 @@ Route::resource('/category', CategoryController::class)->only(['index', 'show', 
 Route::get('/product-category/{category_id}', [ProductController::class, 'categoryID']);
 Route::get('/product/search', [ProductController::class, 'search']);
 Route::resource('/orders', OrderController::class)->only(['index', 'show', 'store', 'update', 'destroy']);
+
 Route::resource('/user_comment', UserCommentController::class)->only(['index', 'show', 'store', 'update', 'destroy']);
 Route::post('/order-status/{id}', [OrderController::class, 'updateStatus']);
+
 //auth
 Route::group([
     'middleware' => 'api',

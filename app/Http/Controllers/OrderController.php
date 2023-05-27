@@ -91,6 +91,7 @@ class OrderController extends Controller
     public function update(Request $request, $id)
     {
         //
+        
     }
 
     /**
@@ -103,6 +104,7 @@ class OrderController extends Controller
     {
         //
     }
+
     public function updateStatus($id)
     {
         $order = Order::find($id);
