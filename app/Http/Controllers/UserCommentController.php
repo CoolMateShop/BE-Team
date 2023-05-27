@@ -41,7 +41,7 @@ class UserCommentController extends Controller
         $request->validate([
             'content'=>'required',
             'user_id'=>'required',
-            'product_detail_id'=>'required',
+            'product_id'=>'required',
         ]);
         $userComment = UserComment::create($request->all());
         return response()->json($userComment);
