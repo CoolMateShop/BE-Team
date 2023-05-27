@@ -103,4 +103,13 @@ class OrderController extends Controller
     {
         //
     }
+    public function updateStatus($id)
+    {
+        $order = Order::find($id);
+            
+        // Cập nhật giá trị status thành 1
+        $order->status = 1;
+        $order->save();
+        return response()->json($order);
+    }
 }
