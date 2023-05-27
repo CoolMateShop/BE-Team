@@ -17,7 +17,7 @@ return new class extends Migration
         Schema::create('product_details', function (Blueprint $table) {
             $table->id();
             $table->string('size', 10);
-            $table->integer('in_stock')->default(0);
+            $table->integer('in_stock')->default(1);
             $table->integer('sold')->default(0);
             $table->integer('product_color_id');
         });
