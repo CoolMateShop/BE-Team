@@ -34,10 +34,15 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+    // public function store(Request $request)
+    // {
+    //     //
+    //     $request->validate([
+    //         'name'=>'required',
+    //     ]);
+    //     $category = Category::create($request->all());
+    //     return response()->json($category);
+    // }
 
     /**
      * Display the specified resource.
@@ -71,6 +76,10 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
+         //cập nhật lại sản phẩm
+         $category = Category::find($id);
+         $category->update($request->all());
+         return response()->json($category);
     }
 
     /**
@@ -82,5 +91,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
+        // Xóa thông tin sản phẩm
+    $product = Category::where('id', $id)->delete();
     }
 }
