@@ -43,7 +43,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'price' => 'required',
@@ -149,6 +148,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
+
             'name' => 'required',
             'price' => 'required',
             'sale' => 'required',
@@ -179,7 +179,31 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        // Xóa các product_details của từng product_color
+        $product->product_colors->each(function ($productColor) {
+            $productColor->product_details()->delete();
+        });
+    
+        // Xóa các product_colors của product
+        $product->product_colors()->delete();
+    
+        
+        // Xóa ảnh trong thư mục public/images
+        $imagePath = public_path('images');
+        foreach ($product->product_images as $productImage) {
+            $imageFileName = basename($productImage->url);
+            $imageFilePath = $imagePath . '/' . $imageFileName;
+            if (File::exists($imageFilePath)) {
+                File::delete($imageFilePath);
+            }
+        }
+        // Xóa các product_images
+        $product->product_images()->delete();
+        
+        // Xóa sản phẩm (product)
+        $product->delete();
     }
 
     /**
