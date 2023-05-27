@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->text('content')->nullable();
             $table->integer('user_id');
-            $table->integer('order_detail_id');
+            $table->integer('product_detail_id');
             $table->integer('star')->default(5);
             $table->timestamp('comment_at')->useCurrent();
         });

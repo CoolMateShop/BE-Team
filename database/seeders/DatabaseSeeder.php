@@ -735,7 +735,7 @@ class DatabaseSeeder extends Seeder
             [
                 "content" => "Sản phẩm tốt quá trời",
                 "user_id" => 4,
-                "order_detail_id" => 1,
+                "product_detail_id" => 1,
                 "star" => 5,
             ]
         );
@@ -743,7 +743,7 @@ class DatabaseSeeder extends Seeder
             [
                 "content" => "Sản phẩm hơi tệ nha",
                 "user_id" => 4,
-                "order_detail_id" => 3,
+                "product_detail_id" => 3,
                 "star" => 3,
             ]
         );
