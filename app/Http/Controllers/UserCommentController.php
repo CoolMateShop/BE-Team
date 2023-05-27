@@ -56,9 +56,9 @@ class UserCommentController extends Controller
      */
     public function show($product_detaill_id)
     {
-        //
-        // $userComment=UserComment::where('product_detail_id',$product_detaill_id)->orderBy('comment_at', 'desc')->get();
-        // return response()->json($userComment);
+        
+        $userComment=UserComment::where('product_detail_id',$product_detaill_id)->orderBy('comment_at', 'desc')->get();
+        return response()->json($userComment);
     }
 
     /**
