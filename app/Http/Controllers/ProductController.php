@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\ProductColor;
+use App\Models\ProductDetail;
+use App\Models\ProductImage;
 use App\Http\Resources\ProductResource;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -38,9 +43,58 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
 
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'price' => 'required',
+            'description' => 'required',
+            'category_id' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors()->toJson(), 400);
+        }
+        $product = new Product($request->all());
+        $product->save();
+        $defaultColors = [
+            ['color' => 'Xanh aqua', 'color_value' => '#4975a9'],
+            ['color' => 'Đen', 'color_value' => '#000000'],
+            ['color' => 'Xanh navy', 'color_value' => '#223249']
+        ];
+        foreach ($defaultColors as $defaultColor) {
+            $productColor = new ProductColor([
+                'color' => $defaultColor['color'],
+                'color_value' => $defaultColor['color_value']
+            ]);
+
+            $product->product_colors()->save($productColor);
+            // Tạo các product_details cho mỗi product_color
+            $sizes = ['XL', 'L', 'M'];
+
+            foreach ($sizes as $size) {
+                $productDetail = new ProductDetail([
+                    'size' => $size,
+                    'product_color_id' => $productColor->id
+                ]);
+
+                $productColor->product_details()->save($productDetail);
+            }
+        }
+        if ($request->has('image')) {
+            $images = [];
+            foreach ($request->file('image') as $image) {
+                $name = time() . $image->getClientOriginalName();
+                $path = $image->storeAs('images', $name);
+                $url = url($path);
+                $image->move("images", $name);
+                $images[] = [
+                    'url' => $url,
+                ];
+            }
+            $product->product_images()->createMany($images);
+        }
+        return response()->json($product, 201);
+
+    }
     /**
      * Display the specified resource.
      *
