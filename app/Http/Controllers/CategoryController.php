@@ -34,15 +34,15 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store(Request $request)
-    // {
-    //     //
-    //     $request->validate([
-    //         'name'=>'required',
-    //     ]);
-    //     $category = Category::create($request->all());
-    //     return response()->json($category);
-    // }
+    public function store(Request $request)
+    {
+        //
+        $request->validate([
+            'name'=>'required',
+        ]);
+        $category = Category::create($request->all());
+        return response()->json($category);
+    }
 
     /**
      * Display the specified resource.
