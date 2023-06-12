@@ -41,21 +41,11 @@ class DatabaseSeeder extends Seeder
         );
         DB::table('users')->insert(
             [
-                'full_name' => 'vanthanh',
-                'password' => Hash::make('vanthanh'),
-                'email' => 'vanthanh@email.com',
-                'phone_number' => '0123456789',
-                'address' => 'Binh Dinh',
-                'role_id' => 1,
-            ]
-        );
-        DB::table('users')->insert(
-            [
-                'full_name' => 'thanhtam',
-                'password' => Hash::make('thanhtam'),
-                'email' => 'thanhtam@email.com',
+                'full_name' => 'khoi',
+                'password' => Hash::make('khoi'),
+                'email' => 'khoi@email.com',
                 'phone_number' => '9876543210',
-                'address' => 'Tay Ninh',
+                'address' => 'Binh Duong',
                 'role_id' => 1,
             ]
         );
