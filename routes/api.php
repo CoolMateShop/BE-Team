@@ -3,6 +3,8 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\BillController;
+use App\Http\Controllers\BillDetailController;
 use App\Models\Category;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserCommentController;
@@ -33,6 +35,9 @@ Route::resource('/orders', OrderController::class)->only(['index', 'show', 'stor
 Route::resource('/user_comment', UserCommentController::class)->only(['index', 'show', 'store', 'update', 'destroy']);
 Route::post('/order-status/{id}', [OrderController::class, 'updateStatus']);
 
+Route::resource('/bill-details', BillDetailController::class);
+// Route::get('/bills', BillController::class);
+Route::resource('/bills', BillController::class);
 //auth
 Route::group([
     'middleware' => 'api',
